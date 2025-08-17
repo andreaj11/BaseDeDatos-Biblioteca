@@ -1,0 +1,8 @@
+Socios con más préstamos en el año actual
+SELECT s.nombre, COUNT(p.prestamo_id) AS total_prestamos
+FROM Prestamos p
+JOIN Socios sON s.socio_id = p.socio_id
+WHERE EXTRACT(YEAR FROM p.fecha_prestamo) = EXTRACT(YEAR FROM CURRENT_DATE)
+GROUP BYs.nombre
+ORDER BYtotal_prestamos DESC
+LIMIT 5;

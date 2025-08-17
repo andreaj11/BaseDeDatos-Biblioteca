@@ -1,0 +1,10 @@
+Top autores más prestados
+SELECT a.nombreAS autor, COUNT(*) AS total_prestamos
+FROM Prestamos p
+JOIN Ejemplares eON e.ejemplar_id=p.ejemplar_id
+JOIN Libros lON l.libro_id=e.libro_id
+JOIN Libros_Autores la ON la.libro_id=l.libro_id
+JOIN Autores a ON a.autor_id=la.autor_id
+GROUP BYa.nombre
+ORDER BYtotal_prestamos DESC
+LIMIT 5;
