@@ -1,0 +1,9 @@
+-- Vista de préstamos agrupados por categoría
+CREATE OR REPLACE VIEW vista_prestamos_por_categoria AS
+SELECT c.nombre AS categoria, COUNT(p.prestamo_id) AS total_prestamos
+FROM Prestamos p
+JOIN Ejemplares e ON e.ejemplar_id = p.ejemplar_id
+JOIN Libros_Categorias lc ON lc.libro_id = e.libro_id
+JOIN Categorias c ON c.categoria_id = lc.categoria_id
+GROUP BY c.nombre
+ORDER BY total_prestamos DESC;

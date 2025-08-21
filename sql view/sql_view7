@@ -1,0 +1,16 @@
+-- Vista: préstamos por socio con total de libros y días acumulados de retraso
+CREATE OR REPLACE VIEW vista_resumen_socios AS
+SELECT s.socio_id, s.nombre,
+       COUNT(p.prestamo_id) AS total_prestamos,
+       SUM(
+         CASE 
+           WHEN p.fecha_limite < CURRENT_DATE AND p.devuelto = FALSE 
+           THEN CURRENT_DATE - p.fecha_limite 
+           ELSE 0 
+         END
+       ) AS dias_retraso_acumulado
+FROM Socios s
+LEFT JOIN Prestamos p ON p.socio_id = s.socio_id
+GROUP BY s.socio_id, s.nombre
+ORDER BY total_prestamos DESC;
+
