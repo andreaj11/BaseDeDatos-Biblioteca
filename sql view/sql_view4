@@ -1,0 +1,11 @@
+-- Vista de préstamos retrasados
+CREATE OR REPLACE VIEW vista_retrasos AS
+SELECT p.prestamo_id, s.nombre AS socio, l.titulo AS libro,
+       p.fecha_prestamo, p.fecha_limite,
+       CURRENT_DATE - p.fecha_limite AS dias_retraso
+FROM Prestamos p
+JOIN Socios s ON s.socio_id = p.socio_id
+JOIN Ejemplares e ON e.ejemplar_id = p.ejemplar_id
+JOIN Libros l ON l.libro_id = e.libro_id
+WHERE p.devuelto = FALSE
+  AND p.fecha_limite < CURRENT_DATE;

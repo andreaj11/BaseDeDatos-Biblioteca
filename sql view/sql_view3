@@ -1,0 +1,9 @@
+-- Vista de préstamos activos por socio
+CREATE OR REPLACE VIEW vista_prestamos_socios AS
+SELECT p.prestamo_id, s.nombre AS socio, l.titulo AS libro,
+       p.fecha_prestamo, p.fecha_limite, p.fecha_devolucion, p.devuelto
+FROM Prestamos p
+JOIN Socios s ON s.socio_id = p.socio_id
+JOIN Ejemplares e ON e.ejemplar_id = p.ejemplar_id
+JOIN Libros l ON l.libro_id = e.libro_id;
+
