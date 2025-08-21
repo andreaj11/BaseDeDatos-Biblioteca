@@ -1,0 +1,40 @@
+CREATE TABLE IF NOT EXISTS Autores (
+    autor_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(120) NOT NULL,
+    nacionalidad VARCHAR(60),
+    fecha_nacimiento DATE,
+    UNIQUE(nombre, fecha_nacimiento)
+);
+
+CREATE TABLE IF NOT EXISTS Categorias (
+    categoria_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(60) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS Libros (
+    libro_id SERIAL PRIMARY KEY,
+    titulo VARCHAR(180) NOT NULL,
+    anio_publicacion INT CHECK (anio_publicacion BETWEEN 1450 AND EXTRACT(YEAR FROM CURRENT_DATE)::INT),
+    editorial VARCHAR(120),
+    isbn13 VARCHAR(13) UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS Socios (
+    socio_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(120) NOT NULL,
+    direccion VARCHAR(180),
+    telefono VARCHAR(20),
+    email VARCHAR(120) UNIQUE,
+    estado VARCHAR(12) NOT NULL DEFAULT 'activo' CHECK (estado IN ('activo','inactivo','moroso'))
+);
+
+
+
+CREATE TABLE IF NOT EXISTS Ejemplares (
+    ejemplar_id SERIAL PRIMARY KEY,
+    libro_id INT NOT NULL REFERENCES Libros(libro_id) ON DELETE CASCADE,
+    codigo_inventario VARCHAR(30) NOT NULL UNIQUE,
+    estado VARCHAR(12) NOT NULL DEFAULT 'disponible' CHECK (estado IN ('disponible','prestado','daniado','perdido')),
+    fecha_alta DATE NOT NULL DEFAULT CURRENT_DATE
+);
+
