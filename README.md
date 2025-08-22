@@ -14,7 +14,7 @@ El sistema permite administrar **libros, autores, categorías, ejemplares, socio
 - 35 Carlos Zelaya
 - 54 Luis Izaguirre
   
-#####todos trabajaron
+>todos trabajaron
 ---
 ![Estructura del proyecto](archivos/tablas.png)
 ---
