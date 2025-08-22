@@ -13,6 +13,7 @@ El sistema permite administrar **libros, autores, categorías, ejemplares, socio
 - 22 Maria Andino 
 - 35 Carlos Zelaya
 - 54 Luis Izaguirre
+  
 #####(todos trabajaron)
 ---
 ![Estructura del proyecto](archivos/tablas.png)
