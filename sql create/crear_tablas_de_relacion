@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS Libros_Autores (
+    libro_id INT NOT NULL REFERENCES Libros(libro_id) ON DELETE CASCADE,
+    autor_id INT NOT NULL REFERENCES Autores(autor_id) ON DELETE RESTRICT,
+    PRIMARY KEY(libro_id, autor_id)
+);
+CREATE TABLE IF NOT EXISTS Libros_Categorias (
+    libro_id INT NOT NULL REFERENCES Libros(libro_id) ON DELETE CASCADE,
+    categoria_id INT NOT NULL REFERENCES Categorias(categoria_id) ON DELETE RESTRICT,
+    PRIMARY KEY(libro_id, categoria_id)
+);
+CREATE TABLE IF NOT EXISTS Prestamos (
+    prestamo_id SERIAL PRIMARY KEY,
+    socio_id INT NOT NULL REFERENCES Socios(socio_id),
+    ejemplar_id INT NOT NULL REFERENCES Ejemplares(ejemplar_id),
+    fecha_prestamo DATE DEFAULT CURRENT_DATE,
+    fecha_limite DATE NOT NULL,
+    fecha_devolucion DATE,
+    devuelto BOOLEAN DEFAULT FALSE
+);
