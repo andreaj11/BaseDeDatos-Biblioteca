@@ -1,0 +1,6 @@
+Cantidad de libros por categoría
+SELECT c.nombreAS categoria, COUNT(lc.libro_id) AS total_libros
+FROM Categorias c
+LEFT JOIN Libros_Categorias lcON lc.categoria_id=c.categoria_id
+GROUP BYc.nombre
+ORDER BYtotal_libros DESC;

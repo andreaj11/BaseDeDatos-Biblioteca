@@ -1,0 +1,6 @@
+Buscar libro por autor
+SELECT l.titulo, a.nombreAS autor
+FROM Libros l
+JOIN Libros_Autores la ON la.libro_id=l.libro_id
+JOIN Autores a ON a.autor_id=la.autor_id
+WHERE a.nombre ILIKE '%Gabriel%';

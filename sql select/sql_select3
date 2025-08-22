@@ -1,0 +1,6 @@
+Libros por categoría
+SELECT l.titulo, c.nombreAS categoria
+FROM Libros l
+JOIN Libros_Categorias lcON lc.libro_id=l.libro_id
+JOIN Categorias cON c.categoria_id=lc.categoria_id
+WHERE c.nombre ILIKE '%Fantasía%';

@@ -1,0 +1,7 @@
+Prestamos activos
+SELECT p.prestamo_id, s.nombreAS socio, l.titulo, p.fecha_limite
+FROM Prestamos p
+JOIN Socios sON s.socio_id=p.socio_id
+JOIN Ejemplares eON e.ejemplar_id=p.ejemplar_id
+JOIN Libros lON l.libro_id=e.libro_id
+WHERE p.devuelto=FALSE;
