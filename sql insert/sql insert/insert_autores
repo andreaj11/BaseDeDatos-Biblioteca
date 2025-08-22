@@ -1,0 +1,9 @@
+INSERT INTO Autores (nombre, nacionalidad, fecha_nacimiento)VALUES
+('Gabriel García Márquez','Colombiana','1927-03-06'),
+('Isabel Allende','Chilena','1942-08-02'),
+('J. K. Rowling','Británica','1965-07-31'),
+('Mario Vargas Llosa','Peruana','1936-03-28'),
+('Julio Cortázar','Argentina','1914-08-26'),
+('Miguel de Cervantes','Española','1547-09-29'),
+('Jane Austen','Británica','1775-12-16'),
+('George Orwell','Británica','1903-06-25');

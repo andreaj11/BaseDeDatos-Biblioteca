@@ -1,0 +1,8 @@
+INSERT INTO Categorias (nombre)VALUES
+('Novela'),
+('Realismo Mágico'),
+('Fantasía'),
+('Historia'),
+('Clásico'),
+('Ciencia Ficción'),
+('Romántica'); 
